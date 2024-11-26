@@ -13,6 +13,65 @@
     box-sizing: border-box;
 
 }
+.page {
+    display: flex;
+    justify-content: space-between;
+    position: relative;
+}
+
+/* Left Banner */
+.left-banner {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 80px; /* Adjust width */
+    height: 100vh; /* Full height of the viewport */
+    background: linear-gradient(to bottom, #8B0000, #FFD700); /* Gradient from dark red to gold */
+    box-shadow: 2px 0 5px rgba(0, 0, 0, 0.1);
+    z-index: 1000; /* Ensure it stays above content */
+}
+
+/* Right Banner */
+.right-banner {
+    position: fixed;
+    top: 0;
+    right: 0;
+    width: 80px; /* Adjust width */
+    height: 100vh; /* Full height of the viewport */
+    background: linear-gradient(to bottom, #FFD700, #20C997); /* Gradient from gold to teal green */
+    box-shadow: -2px 0 5px rgba(0, 0, 0, 0.1);
+    z-index: 1000; /* Ensure it stays above content */
+}
+
+/* Content Area */
+.content {
+    flex: 1;
+    margin: 0 80px; /* Matches banner width */
+    background: #fff;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    z-index: 0;
+}
+@media (max-width: 768px) {
+    .left-banner, .right-banner {
+        display: none;
+    }
+
+    .content {
+        margin: 0; /* Remove margins when banners are hidden */
+    }
+}
+
+.left-banner::before {
+    content: "Dr. Ashraf Hamdy - Senior Consultant";
+    color: #fff;
+    font-size: 1.2rem;
+    writing-mode: vertical-rl; /* Rotate text vertically */ 
+    text-align: center;
+    position: absolute;
+    left: 50%;
+    transform: translateX(-50%); 
+    top: 20px;
+}
 body  {
 
 font-family:   "Poppins", sans-serif;
@@ -31,10 +90,45 @@ ul {
 a{
     text-decoration: none;
 }
+.text-primary {
+    color: black;
+
+}
+.text-primary2 {
+    color: black;
+
+}
+/* CSS for the Typing Effect */
+#typing {
+    font-size: 2rem;
+    font-family: 'Poppins', sans-serif;
+    color: transparent; /* Initially invisible */
+    border-right: 2px solid #fff; /* Cursor effect */
+    white-space: nowrap;
+    display: inline-block;
+    overflow: hidden;
+    width: 0;
+    transition: width 0.4s, color 0.4s ease;
+}
+
+/* Animation for the typing effect */
+@keyframes typing {
+    from {
+        width: 0;
+    }
+    to {
+        width: 100%;
+    }
+}
+
+#typing.typing-effect {
+    color: #2b00ff; /* Gold color for the typed text */
+    animation: typing 4s steps(30) 1s forwards; /* Adjust timing for typing speed */
+}
 
 
     header {
-        background-image: url('./hands-with-letters-forming-word-teamwork.jpg'); /* Replace with your chosen image */
+       background-image: url('./pexels-scottwebb-27406.jpg');
         background-size: cover; /* Ensure the image covers the entire header */
         background-position: center; /* Center the image */
         background-attachment: fixed; /* Parallax effect */
@@ -67,13 +161,15 @@ header img.profile-pic {
 }
 header .content-text p {
     font-size: 1.2rem;
-    color: var(--primary-color);
+    /* color: var(--primary-color); */
+    color:white ;
     margin: 10px 0;
 }
 
 header .content-text h1 {
     font-size: 2.5rem;
-    color: var(--primary-color);
+    /* color: var(--primary-color); */
+    color:white ;
     margin: 10px 0;
 }
 
@@ -240,7 +336,11 @@ form input[type="submit"]:hover {
 
 /* Sections */
 section {
-    margin-bottom: 30px;
+    padding: 20px;
+    margin: 20px 0;
+    border-radius: 8px;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    background: #fff;
 }
 
 /* LinkedIn Icon */
@@ -251,11 +351,21 @@ a i.fa-brands.fa-linkedin {
     transition: transform 0.3s ease, color 0.3s ease;
 }
 
+a i.fa-brands.fa-youtube {
+    font-size: 1.5rem;
+    color: #ef430a; /* LinkedIn blue */
+    margin-left: 10px;
+    transition: transform 0.3s ease, color 0.3s ease;
+}
+
 a i.fa-brands.fa-linkedin:hover {
     transform: scale(1.2);
     color: #005582;
 }
-
+a i.fa-brands.fa-youtube:hover{
+    transform: scale(1.2);
+    color: #ef430a;
+}
 /* Work Experience Section */
 #work-experience {
     margin-top: 40px;
@@ -273,6 +383,7 @@ a i.fa-brands.fa-linkedin:hover {
 
 /* Card Container */
 .card-container {
+    
     display: flex;
     flex-wrap: wrap;
     justify-content: center;
@@ -324,4 +435,135 @@ a i.fa-brands.fa-linkedin:hover {
     font-size: 1rem;
     color: #333;
     line-height: 1.6;
+}
+
+/* Footer Container */
+/* Footer Container */
+footer {
+    background: #3c3c69; /* Dark Navy Blue */
+    color: #EAEAEA; /* Light Gray */
+    padding: 40px 20px;
+    text-align: center;
+    font-family: 'Poppins', sans-serif;
+    position: relative;
+    z-index: 1000;
+}
+
+/* Footer Sections */
+.footer-container {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-between;
+    max-width: 1200px;
+    margin: 0 auto;
+    gap: 20px;
+}
+
+/* Individual Sections */
+.footer-about, .footer-links, .footer-social {
+    flex: 1;
+    min-width: 250px;
+}
+
+/* Footer About Section */
+.footer-about h3 {
+    font-size: 1.5rem;
+    margin-bottom: 10px;
+    color: #F8B400; /* Bright Gold */
+}
+
+.footer-about p {
+    font-size: 1rem;
+    line-height: 1.8;
+    color: #EAEAEA; /* Light Gray */
+}
+
+/* Footer Links Section */
+.footer-links h3 {
+    font-size: 1.5rem;
+    margin-bottom: 10px;
+    color: #F8B400; /* Bright Gold */
+}
+
+.footer-links ul {
+    list-style: none;
+    padding: 0;
+}
+
+.footer-links ul li {
+    margin: 5px 0;
+}
+
+.footer-links ul li a {
+    color: #F8B400; /* Bright Gold */
+    text-decoration: none;
+    transition: color 0.3s ease;
+}
+
+.footer-links ul li a:hover {
+    color: #00ADB5; /* Aqua Blue on Hover */
+}
+
+/* Footer Social Section */
+.footer-social h3 {
+    font-size: 1.5rem;
+    margin-bottom: 10px;
+    color: #F8B400; /* Bright Gold */
+}
+
+.footer-social a {
+    color: #F8B400; /* Bright Gold */
+    font-size: 1.5rem;
+    margin: 0 10px;
+    transition: transform 0.3s ease, color 0.3s ease;
+}
+
+.footer-social a:hover {
+    color: #00ADB5; /* Aqua Blue */
+    transform: scale(1.2); /* Slight zoom on hover */
+}
+
+/* Footer Bottom */
+.footer-bottom {
+    margin-top: 20px;
+    padding-top: 20px;
+    border-top: 1px solid rgba(255, 255, 255, 0.2); /* Subtle divider */
+    font-size: 0.9rem;
+    color: #fff; /* White text */
+    text-align: center; /* Center the text */
+}
+
+/* Back to Top Button */
+#backToTop {
+    position: fixed;
+    bottom: 20px;
+    right: 20px;
+    display: none; /* Initially hidden */
+    background-color: #8B0000; /* Dark red */
+    color: white;
+    border: none;
+    border-radius: 50%;
+    padding: 10px 15px;
+    font-size: 18px;
+    cursor: pointer;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.2);
+    transition: transform 0.3s ease, opacity 0.3s ease;
+    z-index: 9999; /* Ensure the button is above the banner */
+}
+
+/* Hover effect */
+#backToTop:hover {
+    transform: scale(1.1);
+    background-color: #a52a2a;
+}
+
+.fade-in {
+    opacity: 0;
+    transform: translateY(20px);
+    transition: opacity 0.6s ease-out, transform 0.6s ease-out;
+}
+
+.fade-in.visible {
+    opacity: 1;
+    transform: translateY(0);
 }

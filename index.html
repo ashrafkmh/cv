@@ -9,32 +9,40 @@
     <title>Dr. Ashraf Hamdy</title>
 </head>
 <body>
+    <div class="page">
+        <div class="left-banner"></div>
+        <div class="right-banner"></div>
+        <div class="content">
     <header id="home">
         <div class="navbar">
             <nav>
-                <a href="#home" id="logo">Dr.Ashraf Hamdy</a>
+                <!-- <a href="#home" id="logo">Dr.Ashraf Hamdy</a> -->
                 <ul>
                     <li><a href="#about"> About me</a></li>
                     <li><a href="#education">Education</a></li>
                     <li><a href="#certificates">Certifications</a></li>
+                    <li><a href="#workex">Work Experience</a></li>
                     <li><a href="#contact">Contact Me</a></li>
                      </ul>
             </nav>
         </div>
     
             <div class="header-content">
+                <p><span class="text-primary">Hi There, I'm</span></p>
                 <div class="content-text">
-                    <p><span class="text-primary">Hi There, I'm</span></p>
-                    <h1>Dr. Ashraf Hamdy</h1>
+                    <h1><span id="typing"></span></h1>
+
+                    
+                    
                     <!-- <p class="title">PhD-MBA-PMI (PMP-RMP-ACP-PMO CP)-P3O-ITIL-COBIT 2019</p>
                     <p>TOGAF-Certified EFQM Assessor - ISO 9001:2015 Lead Auditor</p> -->
-                    <p>Strategic Planning - Governance - Project Management - Institutional Excellence and Quality Management</p>
+                    <p><span class="text-primary2" >Planning - Governance - Project Management - Institutional Excellence and Quality Management</p></span>
                 </div>
             </div>
             <img src="./me.jpg" alt="Dr. Ashraf Hamdy" class="profile-pic">
         </header>
         <main>
-            <section id="about"> 
+            <section id="about" class="fade-in"> 
             <h2>About Me :</h2>
         
              <p>I am a project management senior consultant, with 25 years’ experience with a strong record of contributions in managing product development projects, delivery, invigorating businesses, heightening productivity, and streamlining systems & procedures while leading complex programs.
@@ -70,7 +78,7 @@
         </ul>
     </section>
     <hr>
-    <section id="work-experience">
+    <section id="workex">
         <h2>Work Experience</h2>
         <div class="card-container">
             <div class="card">
@@ -141,8 +149,111 @@
                      </div>
                 </form>
               </div>
-           
+              
+
     </section>
+  
 </main>
+
+<footer>
+    <div class="footer-container">
+        <div class="footer-about">
+            <h3>About Me</h3>
+            <p>Dr. Ashraf Hamdy - Senior Consultant with over 25 years of experience in project management, governance, and institutional excellence.</p>
+        </div>
+        <div class="footer-links">
+            <h3>Quick Links</h3>
+            <ul>
+                <li><a href="#about">About Me</a></li>
+                <li><a href="#education">Education</a></li>
+                <li><a href="#certificates">Certificates</a></li>
+                <li><a href="#workex">Work Experience</a></li>
+                <li><a href="#contact">Contact Me</a></li>
+            </ul>
+        </div>
+        <div class="footer-social">
+            <h3>Follow Me</h3>
+            <a href="https://www.linkedin.com/in/dr-ashraf-hamdy-00916627/" target="_blank">
+                <i class="fa-brands fa-linkedin"></i>
+            </a>
+            <a href="mailto:ashrafkmh@gmail.com" target="_blank">
+                <i class="fa-solid fa-envelope"></i>
+            </a>
+        </div>
+    </div>
+    <div class="footer-bottom">
+        &copy; 2024 Dr. Ashraf Hamdy. All rights reserved.
+    </div>
+</footer>
+
+</div>
+</div>
+
+<button id="backToTop" title="Go to top">Back to Top</button>
+<script>
+    // Smooth scrolling for navigation links
+    document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+        anchor.addEventListener('click', function (e) {
+            e.preventDefault();
+            document.querySelector(this.getAttribute('href')).scrollIntoView({
+                behavior: 'smooth',
+                block: 'start'
+            });
+        });
+    });
+</script>
+<script>
+    const backToTopButton = document.getElementById("backToTop");
+
+    window.addEventListener("scroll", () => {
+        if (window.scrollY > 100) {
+            backToTopButton.style.display = "block"; // Show the button
+        } else {
+            backToTopButton.style.display = "none"; // Hide the button
+        }
+    });
+
+    backToTopButton.addEventListener("click", () => {
+        window.scrollTo({
+            top: 0,
+            behavior: "smooth"
+        });
+    });
+</script>
+
+<script>
+    // Fade-in on Scroll
+    const fadeIns = document.querySelectorAll('.fade-in');
+
+    const observer = new IntersectionObserver((entries, observer) => {
+        entries.forEach(entry => {
+            if (entry.isIntersecting) {
+                entry.target.classList.add('visible');
+                observer.unobserve(entry.target);
+            }
+        });
+    }, { threshold: 0.1 });
+
+    fadeIns.forEach(fadeIn => observer.observe(fadeIn));
+</script>
+<script>
+    // Typing Effect with color change
+    const text = "Dr. Ashraf Hamdy - Senior Consultant";
+    const typingElement = document.getElementById("typing");
+    let index = 0;
+
+    function typeEffect() {
+        if (index < text.length) {
+            typingElement.innerHTML += text.charAt(index);
+            index++;
+            typingElement.classList.add("typing-effect"); // Add class for color change
+            setTimeout(typeEffect, 100); // Adjust typing speed
+        }
+    }
+
+    document.addEventListener("DOMContentLoaded", typeEffect);
+</script>
+
+
 </body>
 </html>
